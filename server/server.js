@@ -14,7 +14,9 @@ const app = express();
 
 // Middlewares
 app.use(cors({
-  origin: '*', // Allows connection from any dev client origin
+  origin: (origin, callback) => {
+    callback(null, true);
+  },
   credentials: true
 }));
 app.use(express.json());
